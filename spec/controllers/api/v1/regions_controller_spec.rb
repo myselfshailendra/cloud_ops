@@ -54,7 +54,14 @@ RSpec.describe Api::V1::RegionsController, type: :controller do
         get :show_region_prices, params: { service_code: service.code, location: region.location, date: date }, format: :json
       end
 
-      context 'when products exists with provided date' do
+      context 'when provide invalid date' do
+        let(:date) { 'WrongFormat' }
+
+        it { expect(JSON.parse(response.body)).to eq({"errors"=>{"base"=>"Invalid date param."}}) }
+        it { expect(response.status).to eq(422) }
+      end
+
+      context 'when provide valid date and products exist' do
         let(:date) { '03-12-2019' }
 
         it { expect(JSON.parse(response.body).length).to eq(1) }
@@ -62,7 +69,7 @@ RSpec.describe Api::V1::RegionsController, type: :controller do
         it { expect(response.status).to eq(200) }
       end
 
-      context 'when products exists with provided date' do
+      context 'when provide valid date and products do not exist' do
         let(:date) { '02-12-3019' }
 
         it { expect(JSON.parse(response.body)).to eq([]) }

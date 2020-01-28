@@ -3,13 +3,23 @@ class Api::V1::RegionsController < ApplicationController
 
   def show_region_prices
     @products = if params[:date].present?
-                  @region.products.where(effective_date: Time.zone.parse(params[:date]))
+                  date = validate_and_parse_date
+                  @region.products.filter_with_date(date) if date
                 else
                   @region.products
                 end
   end
 
   private
+
+  def validate_and_parse_date
+      parsed_date = Time.zone.parse(params[:date]) rescue nil
+      if parsed_date.nil?
+        render status: :unprocessable_entity, json: { errors: { base: I18n.t('custom.errors.controllers.params.date') } }
+        return nil
+      end
+      parsed_date
+  end
 
   def load_service_and_region
     @service = Service.find_by(code: params[:service_code])

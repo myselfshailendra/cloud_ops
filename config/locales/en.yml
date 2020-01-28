@@ -37,3 +37,8 @@ en:
           not_found: 'Service not found.'
         region:
           not_found: 'Region not found.'
+  custom:
+    errors:
+      controllers:
+        params:
+          date: 'Invalid date param.'
