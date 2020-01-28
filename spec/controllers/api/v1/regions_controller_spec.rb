@@ -37,11 +37,11 @@ RSpec.describe Api::V1::RegionsController, type: :controller do
       it { expect(response.status).to eq(404) }
     end
 
-    # context 'when both created with products' do
-    #   let(:service_code) { service.code }
-    #   let(:location) { region.location }
-    #   it { expect(JSON.parse(response.body).length).to eq(2) }
-    #   it { expect(response.status).to eq(200) }
-    # end
+    context 'when both created with products' do
+      let(:service_code) { service.code }
+      let(:location) { region.location }
+      it { expect(JSON.parse(response.body).length).to eq(2) }
+      it { expect(response.status).to eq(200) }
+    end
   end
 end
