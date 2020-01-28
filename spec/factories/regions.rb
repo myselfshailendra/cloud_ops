@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :region do
-    location { "MyString" }
-    location_type { "MyString" }
+    location { "Europe" }
+    location_type { "AWS Edge Location" }
     service { nil }
   end
 end

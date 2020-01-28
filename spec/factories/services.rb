@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :service do
-    name { "MyString" }
-    code { "MyString" }
+    name { "Amazon CloudFront" }
+    code { "AmazonCloudFront" }
   end
 end

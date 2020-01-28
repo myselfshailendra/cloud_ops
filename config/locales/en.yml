@@ -30,4 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        service:
+          not_found: 'Service not found.'
+        region:
+          not_found: 'Region not found.'
