@@ -2,7 +2,11 @@ class Api::V1::RegionsController < ApplicationController
   before_action :load_service_and_region
 
   def show_region_prices
-    @products = @region.products
+    @products = if params[:date].present?
+                  @region.products.where(effective_date: Time.zone.parse(params[:date]))
+                else
+                  @region.products
+                end
   end
 
   private
