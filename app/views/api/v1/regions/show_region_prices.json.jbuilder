@@ -1,4 +1,4 @@
-json.call @products do |product|
+json.array! @products do |product|
   json.description product.description
   json.beginRange product.begin_range
   json.endRange product.end_range

@@ -3,7 +3,6 @@ class Api::V1::RegionsController < ApplicationController
 
   def show_region_prices
     @products = @region.products
-    render json: @products.to_json, status: :ok
   end
 
   private
